@@ -13,9 +13,9 @@
   
   "dns": {
     "servers": [
-      {"tag": "proxyDns", "address": "https://dns.google/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "🐸 手动切换"},
-      {"tag": "localDns", "address": "223.5.5.5", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "🎯 全球直连"},
-      {"tag": "defaultDns", "address": "223.5.5.5", "address_strategy": "ipv4_only", "detour": "🎯 全球直连"}
+      {"tag": "proxyDns", "address": "https://8.8.8.8/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "🐸 手动切换"},
+      {"tag": "localDns", "address": "https://223.6.6.6/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "🎯 全球直连"},
+      {"tag": "defaultDns", "address": "https://223.6.6.6/dns-query", "address_strategy": "ipv4_only", "detour": "🎯 全球直连"}
     ],
     "rules": [
       { "outbound": "any", "server": "defaultDns", "disable_cache": true },
@@ -24,7 +24,7 @@
       { "rule_set": "geosite-cn", "server": "localDns" },
       { "rule_set": "geosite-geolocation-!cn", "server": "proxyDns" }
     ],
-    "final": "localDns",
+    "final": "proxyDns",
     "strategy": "ipv4_only"
   },
 
@@ -55,18 +55,7 @@
 
   "outbounds": [
     { "tag": "🐸 手动切换", "type": "selector", "outbounds": ["{all}"]},   
-    { "tag": "📹 YouTube", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🤖 OpenAI", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🍀 Google", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "👨‍💻 Github", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🪟 Microsoft", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🎯 全球直连"] },
-    { "tag": "🐬 OneDrive", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🎵 TikTok", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🎥 Netflix", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "📲 Telegram", "type": "selector", "outbounds": ["🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
-    { "tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🇯🇵 日本节点", "🇺🇲 美国节点"] },
-    { "tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🐸 手动切换", "🎯 全球直连"] },    
-    { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
+    { "tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🐸 手动切换", "🎯 全球直连"] },   
     { "tag": "🎯 全球直连", "type": "direct" },
     { "tag": "dns-out", "type": "dns" }
   ],
@@ -80,16 +69,16 @@
       { "clash_mode": "global", "outbound": "GLOBAL" },
       { "domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "🎯 全球直连" },
       { "rule_set": ["geosite-private", "geoip-private"], "outbound": "🎯 全球直连" },
-      { "rule_set": "geosite-chat", "outbound": "🤖 OpenAI" },
-      { "rule_set": "geosite-github", "outbound": "👨‍💻 Github" },
-      { "rule_set": "geosite-youtube", "outbound": "📹 YouTube" },
-      { "rule_set": "geosite-onedrive", "outbound": "🐬 OneDrive" }, 
-      { "rule_set": "geosite-microsoft", "outbound": "🪟 Microsoft" }, 
-      { "rule_set": ["geoip-google", "geosite-google"], "outbound": "🍀 Google" },
-      { "rule_set": "geosite-tiktok", "outbound": "🎵 TikTok" },
-      { "rule_set": ["geoip-apple", "geosite-apple"], "outbound": "🍏 Apple" },
-      { "rule_set": ["geoip-netflix", "geosite-netflix"], "outbound": "🎥 Netflix" },
-      { "rule_set": ["geoip-telegram", "geosite-telegram"], "outbound": "📲 Telegram" },
+      { "rule_set": "geosite-chat", "outbound": "🐸 手动切换" },
+      { "rule_set": "geosite-github", "outbound": "🐸 手动切换" },
+      { "rule_set": "geosite-youtube", "outbound": "🐸 手动切换" },
+      { "rule_set": "geosite-onedrive", "outbound": "🐸 手动切换" }, 
+      { "rule_set": "geosite-microsoft", "outbound": "🐸 手动切换" }, 
+      { "rule_set": ["geoip-google", "geosite-google"], "outbound": "🐸 手动切换" },
+      { "rule_set": "geosite-tiktok", "outbound": "🐸 手动切换" },
+      { "rule_set": ["geoip-apple", "geosite-apple"], "outbound": "🐸 手动切换" },
+      { "rule_set": ["geoip-netflix", "geosite-netflix"], "outbound": "🐸 手动切换" },
+      { "rule_set": ["geoip-telegram", "geosite-telegram"], "outbound": "🐸 手动切换" },
       { "rule_set": "geosite-geolocation-!cn", "outbound": "🐸 手动切换" },
       { "rule_set": ["geoip-cn", "geosite-cn"], "outbound": "🎯 全球直连" }
     ],
@@ -107,8 +96,7 @@
       { "tag": "geosite-onedrive", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs", "download_detour": "🐸 手动切换" },
       { "tag": "geosite-geolocation-!cn", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs", "download_detour": "🐸 手动切换" },
       { "tag": "geosite-cn", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs", "download_detour": "🐸 手动切换" },
-      { "tag": "geosite-private", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs", "download_detour": "🐸 手动切换" },
-            
+      { "tag": "geosite-private", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs", "download_detour": "🐸 手动切换" },            
       { "tag": "geoip-google", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs", "download_detour": "🐸 手动切换" },
       { "tag": "geoip-telegram", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs", "download_detour": "🐸 手动切换" },     
       { "tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🐸 手动切换" },     
