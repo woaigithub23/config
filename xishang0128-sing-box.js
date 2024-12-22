@@ -19,11 +19,14 @@ config.outbounds.map(i => {
   if (['🐸 手动切换'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies))
   }  
-  if (['🇯🇵 日本节点'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /日本|jp|japan|🇯🇵/i))
+  if (['🐠 漏网之鱼'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /漏网之鱼/i))
   }  
-  if (['🇺🇲 美国节点'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
+  if (['🎯 全球直连'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /全球直连/i))
+  }
+  if (['dns-out'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /dns-out/i))
   }
 })
 
