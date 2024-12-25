@@ -83,7 +83,7 @@
     { "tag":"Games", "type":"selector", "outbounds":[ "direct", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others" ] },
     { "tag":"Streaming", "type":"selector", "outbounds":[ "Proxy", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others" ] },
     { "tag":"Global", "type":"selector", "outbounds":[ "Proxy", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others", "direct" ] },
-    { "tag":"Leakage", "type":"selector", "outbounds":[ "Proxy", "direct" ] },
+    { "tag":"China", "type":"selector", "outbounds":[ "direct", "Proxy" ] },
     { "tag":"AdBlock", "type":"selector", "outbounds":[ "block", "direct" ] },
     { "tag":"HongKong", "type":"selector", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇭🇰|HK|hk|香港|港|HongKong"]} ] },
     { "tag":"TaiWan", "type":"selector", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"]} ] },
@@ -123,7 +123,7 @@
       { "rule_set": ["geosite-category-games", "geosite-dmm"], "outbound": "Games" },
       { "rule_set": ["geosite-hbo", "geosite-primevideo"], "outbound": "Streaming" },
       { "rule_set": "geosite-geolocation-!cn", "outbound": "Global" },
-      { "rule_set": ["geoip-cn", "geosite-cn"], "outbound": "Leakage" }
+      { "rule_set": ["geoip-cn", "geosite-cn"], "outbound": "China" }
     ],
     "rule_set": [
       { "tag": "geosite-category-ads-all", "type": "remote", "format": "binary", "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs", "download_detour": "direct", "update_interval": "7d" },
