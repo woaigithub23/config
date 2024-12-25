@@ -1,2 +1,2 @@
 # config
-ios singbox代理客户端配置文件模板
+使用sing-box-subscribe转换ios singbox格式，配置文件模板
