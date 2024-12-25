@@ -1,2 +1,2 @@
 # config
-代理客户端配置文件
+ios singbox代理客户端配置文件模板
