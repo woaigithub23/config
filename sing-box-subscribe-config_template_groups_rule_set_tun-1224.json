@@ -3,6 +3,7 @@
     "level": "info",
     "timestamp": true
   },
+
   "experimental": {
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
@@ -17,23 +18,25 @@
     "store_fakeip": false
     }
   },
+
   "dns": {
     "servers": [
-      { "tag": "proxyDns", "address": "https://8.8.8.8/dns-query", "detour": "Proxy" },
-      { "tag": "localDns", "address": "https://223.6.6.6/dns-query", "detour": "direct" },
-      { "tag": "block", "address": "rcode://success" }
+      {"tag": "proxyDns", "address": "https://8.8.8.8/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "Proxy"},
+      {"tag": "localDns", "address": "https://223.6.6.6/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "direct"},
+      {"tag": "defaultDns", "address": "https://223.6.6.6/dns-query", "address_strategy": "ipv4_only", "detour": "direct"}
     ],
     "rules": [
       { "rule_set": "geosite-category-ads-all", "server": "block" },
-      { "outbound": "any", "server": "localDns", "disable_cache": true },
-      { "rule_set": "geosite-cn", "server": "localDns" },   
+      { "outbound": "any", "server": "defaultDns", "disable_cache": true },
       { "clash_mode": "direct", "server": "localDns" },
       { "clash_mode": "global", "server": "proxyDns" },
+      { "rule_set": "geosite-cn", "server": "localDns" },
       { "rule_set": "geosite-geolocation-!cn", "server": "proxyDns" }
     ],
     "final": "localDns",
     "strategy": "ipv4_only"
   },
+
   "inbounds": [
     {
       "type": "tun",
@@ -60,6 +63,7 @@
       "users": []
     }
   ],
+
   "outbounds": [
     { "tag":"Proxy", "type":"selector", "outbounds":[ "auto", "direct", "{all}" ] },
     { "tag":"OpenAI", "type":"selector", "outbounds":[ "Proxy", "TaiWan", "Singapore", "Japan", "America", "Others" ], "default": "America" },
@@ -91,6 +95,7 @@
     { "type": "dns", "tag": "dns-out" },
     { "type": "block", "tag": "block" }
   ],
+  
   "route": {
     "auto_detect_interface": true,
     "final": "Proxy",
