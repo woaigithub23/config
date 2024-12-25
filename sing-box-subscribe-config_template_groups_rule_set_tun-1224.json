@@ -21,9 +21,10 @@
 
   "dns": {
     "servers": [
-      {"tag": "proxyDns", "address": "https://8.8.8.8/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "Proxy"},
-      {"tag": "localDns", "address": "https://223.6.6.6/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "direct"},
-      {"tag": "defaultDns", "address": "https://223.6.6.6/dns-query", "address_strategy": "ipv4_only", "detour": "direct"}
+      { "tag": "proxyDns", "address": "https://8.8.8.8/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "Proxy" },
+      { "tag": "localDns", "address": "https://223.6.6.6/dns-query", "address_resolver": "defaultDns", "address_strategy": "ipv4_only", "detour": "direct" },
+      { "tag": "defaultDns", "address": "https://223.6.6.6/dns-query", "address_strategy": "ipv4_only", "detour": "direct" },
+      { "tag": "block", "address": "rcode://success" }
     ],
     "rules": [
       { "rule_set": "geosite-category-ads-all", "server": "block" },
@@ -95,7 +96,7 @@
     { "type": "dns", "tag": "dns-out" },
     { "type": "block", "tag": "block" }
   ],
-  
+
   "route": {
     "auto_detect_interface": true,
     "final": "Proxy",
