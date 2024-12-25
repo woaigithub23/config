@@ -83,7 +83,7 @@
     { "tag":"Games", "type":"selector", "outbounds":[ "direct", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others" ] },
     { "tag":"Streaming", "type":"selector", "outbounds":[ "Proxy", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others" ] },
     { "tag":"Global", "type":"selector", "outbounds":[ "Proxy", "HongKong", "TaiWan", "Singapore", "Japan", "America", "Others", "direct" ] },
-    { "tag":"China", "type":"selector", "outbounds":[ "direct", "Proxy" ] },
+    { "tag":"China", "type":"selector", "outbounds":[ "Proxy", "direct" ] },
     { "tag":"AdBlock", "type":"selector", "outbounds":[ "block", "direct" ] },
     { "tag":"HongKong", "type":"selector", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇭🇰|HK|hk|香港|港|HongKong"]} ] },
     { "tag":"TaiWan", "type":"selector", "outbounds":[ "{all}" ], "filter":[ {"action":"include","keywords":["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"]} ] },
